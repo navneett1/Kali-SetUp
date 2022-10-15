@@ -1,0 +1,122 @@
+> Install NVIDIA drivers in Optimus laptop:
+
+- #uname -a
+  
+- Verify you have hybrid graphics 
+  
+		 # lspci | grep -E "VGA|3D"
+    
+- Disable nouveau
+  
+- # echo -e " blacklist nouveau\nooptions nouveau modeset=0\nalias nouveau off" > /etc/modprobe.dblacklist-nouveau.conf
+
+- # update-initramfs -u && reboot
+
+- System will reboot and nouveau should be disabled. Verify if nouveau is disabled:
+   
+    # lsmod | grep -i nouveau
+		
+    If it shows nothing, it means nouveau is disabled.
+    
+ 
+  
+	- When the nouveau is disabled Install NVIDIA driver from Kali Linux's repo:
+  
+		 # apt install nvidia-xconfig nvidia-driver
+     
+     if the command shows error just give the following command
+     
+     # apt install nvidia-xconfig
+     
+     
+     
+___________________________________________________________________________________________________________________________________     
+
+
+
+> If the drivers are not working properly or if it doesn't support dual monitor, you'll have to follow the following steps:
+
+	- We have to find BusID of our NVIDIA card:
+  
+		 # nvidia-xconfig --query-gpu-info | grep 'BusID :' | cut -d ' ' -f6
+     
+		 It will show the BusID like “ PCI:1:0:0 ”
+    
+    
+	- Open the file 
+  
+       # vim /etc/X11/xorg.conf
+       
+        And write in the file:
+
+Section "ServerLayout"
+   Identifier "layout"
+   Screen 0 "nvidia"
+   Inactive "intel"
+EndSection
+
+Section "Device"
+   Identifier "nvidia"
+   Driver "nvidia"
+   BusID "PCI:1:0:0"
+EndSection
+
+Section "Screen"
+   Identifier "nvidia"
+   Device "nvidia"
+   Option "AllowEmptyInitialConfiguration"
+EndSection
+
+Section "Device"
+   Identifier "intel"
+   Driver "modesetting"
+EndSection
+
+Section "Screen"
+   Identifier "intel"
+   Device "intel"
+EndSection
+
+
+  - save and exit the file.
+
+  - Now we have to create some scripts according to our display manager 
+  
+	   # vim /usr/share/gdm/greeter/autostart/optimus.desktop
+     
+     Write in the file:
+     
+[Desktop Entry]
+Type=Application
+Name=Optimus
+Exec=sh -c "xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto"
+NoDisplay=true
+X-GNOME-Autostart-Phase=DisplayServer
+
+
+  - save and exit the file.
+  
+  - Copy this file to designated location 
+  
+    # cp -v /usr/share/gdm/greeter/autostart/optimus.desktop /etc/xdg/autostart/optimus.desktop
+    
+    
+  -Restart 
+  
+      # [ -f /var/run/reboot-required ] && reboot -f 
+      
+      
+      
+___________________________________________________________________________________________________________________________________
+
+
+
+In case of the mis-configuration or any error, if you want to remove the NVIDIA drivers just follow the commands mentioned below and the drivers will be removed:
+
+    - # apt-get remove --purge nvidia*
+	   
+	  - #  rm -rf /etc/X11/xorg.conf
+	   
+	  - #  dpkg --configure -a
+	  
+	  - #  apt autoremove 
