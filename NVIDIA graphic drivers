@@ -113,7 +113,7 @@ ________________________________________________________________________________
 
 In case of the mis-configuration or any error, if you want to remove the NVIDIA drivers just follow the commands mentioned below and the drivers will be removed:
 
-    - # apt-get remove --purge nvidia*
+	  - # apt-get remove --purge nvidia*
 	   
 	  - #  rm -rf /etc/X11/xorg.conf
 	   
