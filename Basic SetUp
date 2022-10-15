@@ -1,0 +1,50 @@
+> The first step is to give static IP to the Kali Linux. You can assign static IP during the installaion of Kali Linux or you can also do it manually after the installaion.
+To assign IP manually just follow the steps mentioned below:
+
+  1. $ sudo vim /etc/network/interfaces
+   *Always remember, never delete any default line in a configuration file. If you want to make any changes in the file, just add a # in front of the default line, that will mention that line as a comment and it won't affect the system.
+    And in case of mis-configuration in the file, just remove the newly added line and remove the # from the default line, that will undo the changes in the file and you won't need to worry about the mis-configurations.
+ 
+  2. In the file you'll see 
+   
+    #The primary network interface
+    allow-hotplug  eth0
+    iface eth0 inet dhcp
+                              
+                                    
+  Make the following changes in the file:
+    
+     iface eth0 inet static
+     address <ip_address>
+     netmask <network_mask>
+     gateway <gateway_ip>
+     dns-nameserver <default DNS>
+    
+  3. Restart network services 
+    $ sudo systemctl restart networking.service
+    and you're good to go.
+    
+After assigning static IP to Kali, run the following commands:
+
+- $ sudo systemctl restart ssh
+- $ sudo vim /etc/ssh/sshd_config
+- $ systemctl restart ssh
+- $ systemctl enable ssh
+- Set the password for root: $ sudo passwd
+- Switch to root: $ sudo su
+
+- # apt install apt-transport-https
+- Google search: Kali repo mirror (htpps://http.kali.org/README.mirrorlist) and copy the mirror repo of any region.
+- # vim /etc/apt/source.list 
+	- Replace the current repo's url with the mirror repo's url. (It will help speed up the downloading processes) But if it doesn't work and the downloading speed is slow, undo the changes in the file.
+- # apt update
+- # apt upgrade 
+- # apt install kali-linux-large
+- # apt dist-upgrade
+- # apt full-upgrade
+- Restart 
+	- # [ -f /var/run/reboot-required ] && reboot -f
+- #apt install linux-headers-$(uname -r)
+- Restart 
+	- # [ -f /var/run/reboot-required ] && reboot -f
+  
