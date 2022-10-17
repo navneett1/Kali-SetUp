@@ -27,7 +27,10 @@ To assign IP manually just follow the steps mentioned below:
 After assigning static IP to Kali, run the following commands:
 
 - $ sudo systemctl restart ssh
+
 - $ sudo vim /etc/ssh/sshd_config
+ 	Enable PasswordAuthentication (Remove the # from the beginning of the line!)
+	
 - $ systemctl restart ssh
 - $ systemctl enable ssh
 - Set the password for root: $ sudo passwd
