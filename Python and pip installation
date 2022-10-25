@@ -1,0 +1,54 @@
+After the basic setup of Kali Linux you should check for the versions of python and pip installed in Kali. If their version is mis-matched, they will conflict and won't work properly.
+
+To check the latest version of python use the command:
+
+      # python -V 
+      
+   it will show the latest version of python installed in the system.
+   
+Also check for the latest version of pip using the command:
+
+      # pip -V 
+      
+*We will install the 2.7 version of both Python and Pip:   
+
+Check for those versions if they are installed or not ny using the following commands
+
+      # python2.7 -V
+      
+      # pip2.7 -V 
+      
+      
+If Pip version 2.7 is not installed, google “bootstrap.pypa.io/pip” and from there download the 2.7 version.
+Run the command:
+
+    # python get-pip.py
+    
+    
+    
+
+After this both Python and Pip will be of same version i.e. v2.7.
+
+
+*You can install Sublime editor from the official Sublime website.
+
+
+After the successful installation of the above you can just install the basic tools that we need by the single command:
+
+
+      # apt install rclone vim fonts-lato fonts-open-sans fonts-roboto fonts-mononoki fonts-indic grc python-is-python3 gcc-multilib g++-multilib libtesseract-dev jq python3-pip openvpn network-manager-openvpn network-manager-openvpn-gnome krita testssl.sh dirsearch wkhtmltopdf virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso golang remmina remmina-plugin-rdp remmina-plugin-secret youtube-dl
+      
+      
+      it will install or update the basic virtualbox, vim, openvpn, youtube video downloader, etc.
+      
+      
+      
+To check the system is encoding or not, give the following command:
+
+      # ffmpeg -encoders 2>/dev/null | grep nvenc
+      
+      
+      
+      
+*After the setup is complete, don't update or upgrade the version of Kali Linux until it is extremely necessary because if you do there might be chances of mis-configuration or versions mis-matching and Kali will not work properly after that.
+**After all this, the Basic SetUp for Kali Linux is complete and you're good to go!!
