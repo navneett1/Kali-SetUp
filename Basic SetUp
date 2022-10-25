@@ -45,9 +45,9 @@ After assigning static IP to Kali, run the following commands:
 - # apt install kali-linux-large
 - # apt dist-upgrade
 - # apt full-upgrade
-- Restart 
+- Restart by using the command: 
 	- # [ -f /var/run/reboot-required ] && reboot -f
-- #apt install linux-headers-$(uname -r)
-- Restart 
+- # apt install linux-headers-$(uname -r)
+- Restart by using the command: 
 	- # [ -f /var/run/reboot-required ] && reboot -f
   
