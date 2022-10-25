@@ -1,6 +1,6 @@
 > Install NVIDIA drivers in Optimus laptop:
 
-- #uname -a
+- # uname -a
   
 - Verify you have hybrid graphics 
   
@@ -29,7 +29,9 @@
      # apt install nvidia-xconfig
      
      
-     
+- After the successful installation of NVIDIA driver, install "Cuda" from the official NVIDIA website (Cuda will start encoding in Kali Linux and it will help run a few programs better).      
+
+
 ___________________________________________________________________________________________________________________________________     
 
 
@@ -101,7 +103,7 @@ X-GNOME-Autostart-Phase=DisplayServer
     # cp -v /usr/share/gdm/greeter/autostart/optimus.desktop /etc/xdg/autostart/optimus.desktop
     
     
-  -Restart 
+  -Restart by using the command:
   
       # [ -f /var/run/reboot-required ] && reboot -f 
       
@@ -120,3 +122,34 @@ In case of the mis-configuration or any error, if you want to remove the NVIDIA 
 	  - #  dpkg --configure -a
 	  
 	  - #  apt autoremove 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+___________________________________________________________________________________________________________________________________
+
+
+
+After the successful installation of NVIDIA drivers and everything, don't run the following commands as it can result in the deletion if the drivers.
+
+- # apt update
+- # apt upgrade
+- # apt autoremove
+- # apt autoclean
+
+
+___________________________________________________________________________________________________________________________________
+
+
+For checking if the NVIDIA driver is working or not
+- # hashcat -I 
+ 
+Encoding enabled or not:
+- # ffmpg -encoders 2>/dev/null | grep nvenc
+
+
+Benchmark testing:
+- # hashcat -b
