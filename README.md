@@ -3,7 +3,7 @@
 # Kali-SetUp
 These are steps for the basic Kali Linux setup for Penetration Testing or Bug Bounty. 
   
-It ranges from the setup of the basic ssh that can be found [here](https://github.com/navneett1/Kali-SetUp/blob/main/Basic%20SetUp) to the installation of NVIDIA graphic drivers in Optimus laptops which is in [here](https://github.com/navneett1/Kali-SetUp/blob/main/NVIDIA%20graphic%20drivers)
+It ranges from the setup of the basic ssh (that can be found [here](https://github.com/navneett1/Kali-SetUp/blob/main/Basic%20SetUp)) to the installation of NVIDIA graphic drivers in Optimus laptops (which is in [here](https://github.com/navneett1/Kali-SetUp/blob/main/NVIDIA%20graphic%20drivers))
   - For setting up the python look for this text right [here](https://github.com/navneett1/Kali-SetUp/blob/main/Python%20and%20pip%20installation)
 
 This is the basic setup that will get you going for now to start your cybersec journey.
